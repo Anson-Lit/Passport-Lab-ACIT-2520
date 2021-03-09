@@ -35,8 +35,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-    console.log(`User details are: `);
-    console.log(req.user);
+    // console.log(`User details are: `);
+    // console.log(req.user);
 
     // console.log("Entire session object:");
     // console.log(req.session);

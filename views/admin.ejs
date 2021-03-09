@@ -1,6 +1,22 @@
-<h1 class="mt-4">Admin Dashboard</h1>
+<h1 class="mt-4">
+
+
+
+    Admin Dashboard</h1>
 <p class="lead mb-3">Welcome
     <%= user.name %>
 </p>
 
-<a href="/auth/logout" class="btn btn-secondary">Logout</a>
+<h2>Current sessions</h2>
+
+<% for (key in sessions){ %>
+    <p>Session ID:
+        <%= key %><br> User Id:
+            <%= JSON.parse(sessions[key]).passport.user %> <br>
+                <!-- <a href="/admin" class="btn btn-secondary" onclick='alertUser()'>Revoke session</a> -->
+                <a href="/admin" class="btn btn-secondary" onclick='req.sessionStore.destroy(sessions.id)'>Revoke session</a>
+    </p>
+
+    <% } %>
+
+        <a href="/auth/logout" class="btn btn-secondary">Logout</a>

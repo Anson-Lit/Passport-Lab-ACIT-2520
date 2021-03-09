@@ -14,7 +14,6 @@ module.exports = {
     ensureAdmin: function(req, res, next) {
         if (req.isAuthenticated()) {
             if (req.user.admin) {
-                console.log("YES COONFIRMED")
                 return next();
             }
         }

@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { ensureAuthenticated, ensureAdmin } = require("../middleware/checkAuth");
-// const { ensureAdmin } = require("../middleware/checkAuth");
+
+
+
+
 router.get("/", (req, res) => {
     res.send("welcome");
 });
@@ -14,9 +17,14 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
 
 
 router.get("/admin", ensureAdmin, (req, res) => {
+    const session = req.sessionStore.sessions
     res.render("admin", {
-        user: req.user
+        user: req.user,
+        sessions: session
     })
 })
 
 module.exports = router;
+
+//req.session.destroy();
+//req.sessionStore.destroy();

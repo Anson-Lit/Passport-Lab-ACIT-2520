@@ -13,8 +13,8 @@
     <p>Session ID:
         <%= key %><br> User Id:
             <%= JSON.parse(sessions[key]).passport.user %> <br>
-                <!-- <a href="/admin" class="btn btn-secondary" onclick='alertUser()'>Revoke session</a> -->
                 <a href="/admin" class="btn btn-secondary" onclick='req.sessionStore.destroy(sessions.id)'>Revoke session</a>
+                <!-- this doesnt work lol -->
     </p>
 
     <% } %>

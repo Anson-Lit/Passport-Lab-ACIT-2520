@@ -26,7 +26,7 @@ const getUserByGitHubIdOrCreate = (profile) => {
             return (null, user);
         }
     } catch (err) {
-        let newUser = { id: profile.id, name: profile.displayName }
+        let newUser = { id: profile.id, name: profile.displayName, admin: false }
         userModel.enterDatabase(newUser)
         return (null, newUser);
     }

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { ensureAuthenticated, isAdmin } = require("../middleware/checkAuth");
-
+const { ensureAuthenticated, ensureAdmin } = require("../middleware/checkAuth");
+// const { ensureAdmin } = require("../middleware/checkAuth");
 router.get("/", (req, res) => {
     res.send("welcome");
 });
@@ -11,5 +11,12 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
         user: req.user,
     });
 });
+
+
+router.get("/admin", ensureAdmin, (req, res) => {
+    res.render("admin", {
+        user: req.user
+    })
+})
 
 module.exports = router;

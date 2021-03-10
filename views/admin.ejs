@@ -13,10 +13,9 @@
     <p>Session ID:
         <%= key %><br> User Id:
             <%= JSON.parse(sessions[key]).passport.user %> <br>
-                <a href="/admin" class="btn btn-secondary" onclick='req.sessionStore.destroy(sessions.id)'>Revoke session</a>
-                <!-- this doesnt work lol -->
+                <form action="/destroy/:<%= key %>" method="POST">
+                    <button type="submit" class="btn btn-primary btn-block">Revoke session</button>
+                </form>
     </p>
-
     <% } %>
-
         <a href="/auth/logout" class="btn btn-secondary">Logout</a>

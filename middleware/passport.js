@@ -2,7 +2,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const GitHubStrategy = require("passport-github").Strategy;
 const userController = require("../controllers/userController");
-require('dotenv').config();
+
 
 const localLogin = new LocalStrategy({
         usernameField: "email",
@@ -24,7 +24,7 @@ const gitHubLogin = new GitHubStrategy({
         callbackURL: "http://localhost:8000/auth/github/callback"
     },
     (accessToken, refreshToken, profile, cb) => { // I think cb here is the same as done from local strat
-        let user = userController.getUserByGitHubIdOrCreate(profile)
+        let user = userController.getUserByGitHubIdOrCreate(profile);
         return cb(null, user);
     }
 );

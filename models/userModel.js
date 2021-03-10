@@ -2,7 +2,7 @@ const database = [{
         id: 1,
         name: "Jimmy Smith",
         email: "jimmy123@gmail.com",
-        password: "jimmy123!",
+        password: "j",
         admin: true
     },
     {
@@ -15,8 +15,8 @@ const database = [{
     {
         id: 3,
         name: "Jonathan Chen",
-        email: "jonathan123@gmail.com",
-        password: "jonathan123!",
+        email: "j@j.com",
+        password: "j",
         admin: false
     },
     {

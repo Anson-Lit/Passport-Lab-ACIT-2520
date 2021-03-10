@@ -21,16 +21,16 @@ const getUserById = (id) => {
 
 const getUserByGitHubIdOrCreate = (profile) => {
     try {
-        let user = userModel.findById(profile.id)
+        let user = userModel.findById(profile.id);
         if (user) {
             return (null, user);
         }
     } catch (err) {
-        let newUser = { id: profile.id, name: profile.displayName, admin: false }
-        userModel.enterDatabase(newUser)
+        let newUser = { id: profile.id, name: profile.displayName, admin: false};
+        userModel.enterDatabase(newUser);
         return (null, newUser);
     }
-}
+};
 
 function isUserValid(user, password) {
     return user.password === password;

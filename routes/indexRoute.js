@@ -1,4 +1,5 @@
 const express = require("express");
+const {Store} = require("express-session");
 const router = express.Router();
 const { ensureAuthenticated, ensureAdmin } = require("../middleware/checkAuth");
 
@@ -14,32 +15,17 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
 
 
 router.get("/admin", ensureAdmin, (req, res) => {
-    const session = req.sessionStore.sessions
+    const session = req.sessionStore.sessions;
     res.render("admin", {
         user: req.user,
         sessions: session
     })
-})
+});
 
 router.post("/destroy/:key?", ensureAdmin, (req, res) => {
     //Do something here to revoke session
-    var key = req.params.key
-        // console.log("*********")
-        // console.log(key)
-        // console.log("******")
-    let session = req.sessionStore.sessions
-        // console.log("111111111111111111111111111111")
-        // console.log(session)
-    req.session.destroy(key)
-        // console.log("22222222222222222222222222222222")
-        // console.log(session)
-    res.render("admin", {
-        user: req.user,
-        sessions: session
-    })
-})
+    req.sessionStore.destroy(req.params.key.replace(":",""));
+    res.redirect("/admin");
+});
 
 module.exports = router;
-
-//req.session.destroy();
-//req.sessionStore.destroy();
